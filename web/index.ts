@@ -155,7 +155,7 @@ const imageLightOptions: DropdownOption[] = [
   },
   {
     text: 'Chioke',
-    value: 'https://avatars.githubusercontent.com/u/16342751?v=4',
+    value: 'https://avatars.githubusercontent.com/u/16342751',
   },
 ];
 
@@ -174,7 +174,7 @@ const imageDarkOptions: DropdownOption[] = [
   },
   {
     text: 'Chioke',
-    value: 'https://avatars.githubusercontent.com/u/16342751?v=4',
+    value: 'https://avatars.githubusercontent.com/u/16342751',
   },
 ];
 
