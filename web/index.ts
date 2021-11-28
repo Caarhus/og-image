@@ -22,8 +22,7 @@ const ImagePreview = ({
     opacity: loading ? 0.1 : 1,
   };
   const title = 'Click to copy image URL to clipboard';
-  return H(
-    'a',
+  return H('a',
     { className: 'image-wrapper', href: src, onclick },
     H('img', { src, onload, onerror, style, title })
   );
@@ -67,8 +66,7 @@ const TextInput = ({ value, oninput }: TextInputProps) => {
   return H(
     'div',
     { className: 'input-outer-wrapper' },
-    H(
-      'div',
+    H('div',
       { className: 'input-inner-wrapper' },
       H('input', {
         type: 'text',
@@ -94,13 +92,11 @@ interface FieldProps {
 }
 
 const Field = ({ label, input }: FieldProps) => {
-  return H(
-    'div',
+  return H('div',
     { className: 'field' },
-    H(
-      'label',
-      H('div', { className: 'field-label' }, label),
-      H('div', { className: 'field-value' }, input)
+    H('label',
+        H('div', { className: 'field-label' }, label),
+        H('div', { className: 'field-value' }, input)
     )
   );
 };
@@ -112,14 +108,11 @@ interface ToastProps {
 
 const Toast = ({ show, message }: ToastProps) => {
   const style = { transform: show ? 'translate3d(0,-0px,-0px) scale(1)' : '' };
-  return H(
-    'div',
+  return H('div',
     { className: 'toast-area' },
-    H(
-      'div',
+    H('div',
       { className: 'toast-outer', style },
-      H(
-        'div',
+      H('div',
         { className: 'toast-inner' },
         H('div', { className: 'toast-message' }, message)
       )
@@ -149,30 +142,41 @@ const markdownOptions: DropdownOption[] = [
 
 const imageLightOptions: DropdownOption[] = [
   {
+    text: 'Vercel',
+    value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-black.svg',
+  },
+  {
     text: 'Next.js',
-    value:
-      'https://assets.vercel.com/image/upload/front/assets/design/nextjs-black-logo.svg',
+    value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-black-logo.svg',
   },
   {
     text: 'Hyper',
-    value:
-      'https://assets.vercel.com/image/upload/front/assets/design/hyper-color-logo.svg',
+    value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-color-logo.svg',
   },
   {
-    text: 'Jedi',
-    value:
-      'https://dl.airtable.com/.attachmentThumbnails/7136316ae61f2abeca27085ae05b8b1f/db9f8d9d.png',
-  },
-  {
-    text: 'Airport',
-    value: 'https://airport-bucket.s3.amazonaws.com/airport-cdn/airport-logo.svg',
-  },{
-    text: 'Sidd',
-    value: 'https://sidd-site-cms.s3.amazonaws.com/headshot_36b98533a8.png?875165.6000000089',
+    text: 'Chioke',
+    value: 'https://avatars.githubusercontent.com/u/16342751?v=4',
   },
 ];
 
-const imageDarkOptions: DropdownOption[] = [];
+const imageDarkOptions: DropdownOption[] = [
+  {
+    text: 'Vercel',
+    value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-white.svg'
+  },
+  {
+    text: 'Next.js',
+    value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-white-logo.svg'
+  },
+  {
+    text: 'Hyper',
+    value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-bw-logo.svg'
+  },
+  {
+    text: 'Chioke',
+    value: 'https://avatars.githubusercontent.com/u/16342751?v=4',
+  },
+];
 
 const widthOptions = [
   { text: 'width', value: 'auto' },
@@ -258,22 +262,18 @@ const App = (_: any, state: AppState, setState: SetState) => {
     url.searchParams.append('heights', height);
   }
 
-  return H(
-    'div',
+  return H('div',
     { className: 'split' },
-    H(
-      'div',
+    H('div',
       { className: 'pull-left' },
-      H(
-        'div',
+      H('div',
         H(Field, {
           label: 'Theme',
           input: H(Dropdown, {
             options: themeOptions,
             value: theme,
             onchange: (val: Theme) => {
-              const options =
-                val === 'light' ? imageLightOptions : imageDarkOptions;
+              const options = val === 'light' ? imageLightOptions : imageDarkOptions;
               let clone = [...images];
               clone[0] = options[selectedImageIndex].value;
               setLoadingState({ theme: val, images: clone });
@@ -316,8 +316,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         }),
         H(Field, {
           label: 'Image 1',
-          input: H(
-            'div',
+          input: H('div',
             H(Dropdown, {
               options: imageOptions,
               value: imageOptions[selectedImageIndex].value,
@@ -331,8 +330,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
                 });
               },
             }),
-            H(
-              'div',
+            H('div',
               { className: 'field-flex' },
               H(Dropdown, {
                 options: widthOptions,
@@ -370,8 +368,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
                   setLoadingState({ images: clone, overrideUrl: url });
                 },
               }),
-              H(
-                'div',
+              H('div',
                 { className: 'field-flex' },
                 H(Dropdown, {
                   options: widthOptions,
@@ -394,8 +391,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
                   },
                 })
               ),
-              H(
-                'div',
+              H('div',
                 { className: 'field-flex' },
                 H(Button, {
                   label: `Remove Image ${i + 2}`,
@@ -432,8 +428,7 @@ const App = (_: any, state: AppState, setState: SetState) => {
         })
       )
     ),
-    H(
-      'div',
+    H('div',
       { className: 'pull-right' },
       H(ImagePreview, {
         src: overrideUrl ? overrideUrl.href : url.href,
