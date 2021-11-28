@@ -148,13 +148,7 @@ const imageLightOptions: DropdownOption[] = [
     { text: 'Chioke', value: 'https://avatars.githubusercontent.com/u/16342751' },
 ];
 
-const imageDarkOptions: DropdownOption[] = [
-
-    { text: 'Vercel', value: 'https://assets.vercel.com/image/upload/front/assets/design/vercel-triangle-white.svg' },
-    { text: 'Next.js', value: 'https://assets.vercel.com/image/upload/front/assets/design/nextjs-white-logo.svg' },
-    { text: 'Hyper', value: 'https://assets.vercel.com/image/upload/front/assets/design/hyper-bw-logo.svg' },
-    { text: 'Chioke', value: 'https://avatars.githubusercontent.com/u/16342751' },
-];
+const imageDarkOptions: DropdownOption[] = [];
 
 const widthOptions = [
     { text: 'width', value: 'auto' },
@@ -208,9 +202,9 @@ const App = (_: any, state: AppState, setState: SetState) => {
         theme = 'light',
         md = true,
         text = '**Hello** World',
-        images=[imageLightOptions[0].value],
-        widths=[],
-        heights=[],
+        images = [imageLightOptions[0].value],
+        widths = [],
+        heights = [],
         showToast = false,
         messageToast = '',
         loading = true,
